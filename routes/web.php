@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,16 +28,15 @@ Route::get('/staff/edit', function () {
     return view('/staff/edit');
 });
 
-
-Route::get('/teacher/index', function () {
-    return view('teacher/index');
-});
-Route::get('/teacher/create', function () {
-    return view('/teacher/create');
-});
-Route::get('/teacher/edit', function () {
-    return view('/teacher/edit');
-});
+// Route::prefix('user')->group(function(){
+    Route::prefix('teacher')->name('teacher.')->group(function(){
+        Route::get('/index', [UserController::class, 'index'])->name('index');
+        Route::get('/create', [UserController::class, 'create'])->name('create');
+        Route::post('/store', [UserController::class, 'store'])->name('store');
+        Route::get('/edit', [UserController::class, 'edit'])->name('edit');
+        Route::post('/update', [UserController::class, 'update'])->name('update');
+    });
+// });
 
 
 Route::get('/klasifikasi_letter/index', function () {

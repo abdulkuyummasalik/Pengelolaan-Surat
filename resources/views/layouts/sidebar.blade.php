@@ -16,7 +16,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dataUserDropdown">
                     <li><a class="dropdown-item" href="/staff/index">Data Staff Tata Usaha</a></li>
-                    <li><a class="dropdown-item" href="/teacher/index">Data Guru</a></li>
+                    <li><a class="dropdown-item" href="{{ route('teacher.index') }}">Data Guru</a></li>
                 </ul>
             </li>
 

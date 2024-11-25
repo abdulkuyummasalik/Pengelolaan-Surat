@@ -6,7 +6,8 @@
             <p class="text-muted">Data User / Data Guru / <b>Tambah Data Guru</b></p>
         </div>
         <div class="card p-3 bg-light shadow-lg border-light">
-            <form action="" method="POST">
+            <form action="{{ route('teacher.store') }}" method="POST">
+                @csrf
                 <div class="mb-3">
                     <label for="name" class="col-sm-2 col-form-label">Nama</label>
                     <input type="text" class="form-control" id="name" name="name">
