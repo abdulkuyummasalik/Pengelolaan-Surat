@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Surat Keluar</h5>
                         <div class="pt-3 d-flex align-items-center gap-3">
-                            <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center  bg-opacity-25" 
+                            <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center  bg-opacity-25"
                                 style="width: 50px; height: 50px;">
                                 <i class="bi bi-send-fill text-primary fs-4"></i>
                             </div>
@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Klasifikasi Surat</h5>
                         <div class="pt-3 d-flex align-items-center gap-3">
-                            <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center  bg-opacity-25" 
+                            <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center  bg-opacity-25"
                                 style="width: 50px; height: 50px;">
                                 <i class="bi bi-file-text-fill text-primary fs-4"></i>
                             </div>
@@ -54,11 +54,11 @@
                     <div class="card-body">
                         <h5 class="card-title">Staff Tata Usaha</h5>
                         <div class="pt-3 d-flex align-items-center gap-3">
-                            <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center  bg-opacity-25" 
+                            <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center  bg-opacity-25"
                                 style="width: 50px; height: 50px;">
                                 <i class="bi bi-people-fill text-primary fs-4"></i>
                             </div>
-                            <h1 class="mb-0">1</h1>
+                            <h1 class="mb-0">{{ $staffCount }}</h1>
                         </div>
                     </div>
                 </div>
@@ -70,11 +70,11 @@
                     <div class="card-body">
                         <h5 class="card-title">Guru</h5>
                         <div class="pt-3 d-flex align-items-center gap-3">
-                            <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center  bg-opacity-25" 
+                            <div class="rounded-circle bg-primary d-flex justify-content-center align-items-center  bg-opacity-25"
                                 style="width: 50px; height: 50px;">
                                 <i class="bi bi-book-fill text-primary fs-4"></i>
                             </div>
-                            <h1 class="mb-0">1</h1>
+                            <h1 class="mb-0">{{ $guruCount }}</h1>
                         </div>
                     </div>
                 </div>

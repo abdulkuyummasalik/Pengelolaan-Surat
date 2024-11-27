@@ -3,13 +3,21 @@
     <div class="container mt-4">
         <div class="mb-5 text-primary">
             <h1 class="fw-bold">Data Guru</h1>
-            <p class="text-muted">Data User / <b>Data Guru</b></p>
+            <p class="text-muted">Data User / <b>Data Guru : {{ $guruCount }}</b></p>
         </div>
 
         @if (Session::get('success'))
             <div class="d-flex justify-content-center mb-2">
                 <div class="alert alert-primary text-center w-50" role="alert">
                     <i class="bi bi-check-circle-fill me-2"></i> {{ Session::get('success') }}
+                </div>
+            </div>
+        @endif
+
+        @if (Session::get('deleted'))
+            <div class="d-flex justify-content-center mb-2">
+                <div class="alert alert-danger text-center w-50" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i> {{ Session::get('deleted') }}
                 </div>
             </div>
         @endif
@@ -31,18 +39,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
+                    @foreach ($users as $index => $user)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ ($users->currentPage() - 1) * $users->perPage() + ($index + 1) }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>
+                            <td>Guru</td>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <a href="" class="btn btn-warning me-2">Edit</a>
-                                    {{-- {{ route('teacher.edit', $user->id) }} --}}
-                                    <form action="" method="POST">
-                                        {{-- {{ route('teacher.destroy', $user->id) }} --}}
+                                    <a href="{{ route('teacher.edit', $user->id) }}" class="btn btn-warning me-2">Edit</a>
+                                    <form action="{{ route('teacher.destroy', $user->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Hapus</button>
@@ -53,6 +59,14 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-between align-items-center my-3">
+                <p class="mb-0 text-primary">
+                    Halaman {{ $users->currentPage() }} dari {{ $users->lastPage() }} halaman
+                </p>
+                <div>
+                    {{ $users->links() }}
+                </div>
+            </div>
         </div>
     </div>
 @endsection

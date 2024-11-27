@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class StaffController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::all();
-        return view('teacher.index', compact('users'));
+        $users = User::where('role', 'staff')->orderBy('created_at', 'desc')->paginate(10);
+        $staffCount = User::where('role', 'staff')->count();
+
+        return view('staff.index', compact('users', 'staffCount'));
     }
 
     /**
@@ -21,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('teacher.create');
+        return view('staff.create');
     }
 
     /**
@@ -39,10 +41,10 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => 'guru'
+            'role' => 'staff'
         ]);
 
-        return redirect()->route('teacher.index')->with('success', 'User Berhasil Dibuat');
+        return redirect()->route('staff.index')->with('success', 'User Berhasil Dibuat');
     }
 
     /**
@@ -58,28 +60,35 @@ class UserController extends Controller
      */
     public function edit(User $user, $id)
     {
-        $user = User::find($id);
-        return view('teacher.edit',compact('user'));
+        $staff = User::find($id);
+        return view('staff.edit', compact('staff'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user,$id)
+    public function update(Request $request, User $user, $id)
     {
         $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email:dns|unique:users',
+            'email' => 'required|email:dns',
             'password' => 'nullable|min:3'
         ]);
-        
+        User::find($id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+        return redirect()->route('staff.index')->with('success', 'User Berhasil Diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(User $user, $id)
     {
-        //
+        $staff = User::find($id);
+        $staff->delete();
+        return redirect()->route('staff.index')->with('deleted', 'User Berhasil Dihapus');
     }
 }
