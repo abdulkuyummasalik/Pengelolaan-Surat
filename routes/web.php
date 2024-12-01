@@ -51,8 +51,8 @@ Route::prefix('klasifikasi_letter')->name('klasifikasi_letter.')->group(function
     Route::get('/download-pdf/{id}', [LetterTypeController::class, 'downloadPdf'])->name('download-pdf');
 });
 
-Route::get('/letter/index', function () {
-    return view('letter/index');
+Route::get('/klasifikasi_letter/test', function () {
+    return view('klasifikasi_letter/downloadTest');
 });
 Route::get('/letter/create', function () {
     return view('/letter/create');

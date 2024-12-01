@@ -8,11 +8,20 @@
         </div>
 
         <!-- Alert Section -->
+        @if (Session::get('success'))
         <div class="d-flex justify-content-center mb-2">
             <div class="alert alert-primary text-center w-50" role="alert">
-                <i class="bi bi-check-circle-fill me-2"></i> Success BROO
+                <i class="bi bi-check-circle-fill me-2"></i> {{ Session::get('success') }}
             </div>
         </div>
+        @endif
+        @if (Session::get('failed'))
+        <div class="d-flex justify-content-center mb-2">
+            <div class="alert alert-danger text-center w-50" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i> {{ Session::get('failed') }}
+            </div>
+        </div>
+        @endif
 
         <!-- Cards Section -->
         <div class="row g-4">
@@ -26,7 +35,7 @@
                                 style="width: 50px; height: 50px;">
                                 <i class="bi bi-send-fill text-primary fs-4"></i>
                             </div>
-                            <h1 class="mb-0">1</h1>
+                            <h1 class="mb-0">0</h1>
                         </div>
                     </div>
                 </div>
@@ -42,7 +51,7 @@
                                 style="width: 50px; height: 50px;">
                                 <i class="bi bi-file-text-fill text-primary fs-4"></i>
                             </div>
-                            <h1 class="mb-0">1</h1>
+                            <h1 class="mb-0">{{ $letterType }}</h1>
                         </div>
                     </div>
                 </div>

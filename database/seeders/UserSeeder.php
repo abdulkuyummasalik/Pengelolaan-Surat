@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         $roles = ['guru', 'staff'];
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             User::create([
                 'name' => fake()->name(),
                 'email' => fake()->unique()->safeEmail(),
