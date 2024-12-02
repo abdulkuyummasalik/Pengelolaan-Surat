@@ -31,7 +31,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dataSuratDropdown">
                     <li><a class="dropdown-item" href="{{ route('klasifikasi_letter.index') }}">Klasifikasi Surat</a>
                     </li>
-                    <li><a class="dropdown-item" href="/letter/index">Data Surat</a></li>
+                    <li><a class="dropdown-item" href="{{ route('letters.index') }}">Data Surat</a></li>
                 </ul>
             </li>
         </ul>

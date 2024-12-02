@@ -31,20 +31,9 @@ class LetterTypeController extends Controller
      */
     public function create()
     {
-        // Dapatkan tanggal hari ini dalam format dmy (ddmmy)
-        $today = Carbon::now()->format('dmy');
-
-        // Hitung jumlah surat yang dibuat pada hari ini
-        $countToday = LetterType::whereDate('created_at', Carbon::today())->count();
-
-        // Nomor urut surat untuk hari ini
-        $nextNumber = str_pad($countToday + 1, 2, '0', STR_PAD_LEFT); // Format: 01, 02, 03, dst.
-
-        // Gabungkan tanggal dengan nomor urut
-        $letterCode = "{$today}-{$nextNumber}";
-
-        return view("klasifikasi_letter.create", compact("letterCode"));
+        return view("klasifikasi_letter.create");
     }
+
 
 
     /**
@@ -52,25 +41,24 @@ class LetterTypeController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
-            "name_type" => "required|string"
+            'letter_code' => 'required|integer',
+            'name_type' => 'required|string',
         ]);
 
-        // Buat kode surat otomatis
-        $today = Carbon::now()->format('dmy');
-        $countToday = LetterType::whereDate('created_at', Carbon::today())->count();
-        $nextNumber = str_pad($countToday + 1, 2, '0', STR_PAD_LEFT);
-        $letterCode = "{$today}-{$nextNumber}";
+        $inputNumber = $request->letter_code;
+        $totalLetters = LetterType::count() + 1;
 
-        // Simpan data ke database
+        $letterCode = "{$inputNumber}-{$totalLetters}";
+
         $letter = new LetterType();
         $letter->letter_code = $letterCode;
         $letter->name_type = $request->name_type;
         $letter->save();
 
-        return redirect()->route("klasifikasi_letter.index")->with("success", "Berhasil Menambahkan Data Klasifikasi Surat");
+        return redirect()->route('klasifikasi_letter.index')->with('success', 'Berhasil Menambahkan Data Klasifikasi Surat');
     }
-
 
     /**
      * Display the specified resource.

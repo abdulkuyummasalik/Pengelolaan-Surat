@@ -25,7 +25,37 @@
                         </th>
                     </tr>
                 </thead>
+                <tbody>
+                    @foreach($letter as $index => $item)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $letterType->letter_code }}</td>
+                            <td>{{ $item->letter_perihal }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</td>
+                            <td>
+                                @foreach(json_decode($item->recipients) as $recipient)
+                                    <span>{{ $recipient }}, </span>
+                                @endforeach
+                            </td>
+                            <td>{{ $guru->name}}</td>
+                            <td>
+                                <!-- Tampilkan hasil rapat jika ada -->
+                                {{ $item->result_rapat ?? 'Belum ada hasil' }}
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ route('letters.show', $item->id) }}" class="btn btn-info btn-sm">Detail</a>
+                                <a href="{{ route('letters.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="{{ route('letters.destroy', $item->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
+            
         </div>
     </div>
 @endsection

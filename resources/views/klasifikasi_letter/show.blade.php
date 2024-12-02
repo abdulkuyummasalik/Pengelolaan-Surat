@@ -8,8 +8,13 @@
         </div>
 
         <div class="mb-3">
-            <h2 class="fw-bold  text-primary">{{ $letter->letter_code }} | <span
-                    class=" text-muted">{{ $letter->name_type }}</span></h2>
+            <h2 class="fw-bold  text-primary">{{ $letter->letter_code }} | <span class="text-muted fw-normal">
+                    @if ($letter->name_type == 'rapat_guru')
+                        Rapat Guru
+                    @else
+                        Rapat Rutin
+                    @endif
+                </span></h2>
         </div>
         <div class="card p-4 shadow-lg border-light w-50">
             <div class="d-flex justify-content-between">

@@ -9,22 +9,22 @@
             <form action="{{ route('klasifikasi_letter.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="letter_code" class="col-sm-2 col-form-label">Kode Surat</label>
-                    <input type="text" class="form-control" id="letter_code" name="letter_code"
-                        value="{{ $letterCode }}" readonly>
+                    <label for="letter_code" class="col-sm-2 col-form-label">Angka yang Diinput</label>
+                    <input type="number" class="form-control" id="letter_code" name="letter_code" required>
                 </div>
                 <div class="mb-3">
                     <label for="name_type" class="col-sm-2 col-form-label">Klasifikasi Surat</label>
                     <select name="name_type" id="name_type" class="form-select">
                         <option selected disabled>Pilih Klasifikasi</option>
                         <option value="rapat_guru">Rapat Guru</option>
-                        <option value="surat_rutin">Surat Rutin</option>
+                        <option value="rapat_rutin">Surat Rutin</option>
                     </select>
                 </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary mt-3">Tambah</button>
                 </div>
             </form>
+
         </div>
     </div>
 @endsection

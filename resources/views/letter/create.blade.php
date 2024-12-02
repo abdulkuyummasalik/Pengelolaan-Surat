@@ -7,24 +7,27 @@
         </div>
 
         <div class="card p-4 bg-light shadow-lg border-light">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('letters.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label fw-bold">Perihal</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Perihal Surat" required>
+                    <label for="letter_perihal" class="form-label fw-bold">Perihal</label>
+                    <input type="text" class="form-control" id="letter_perihal" name="letter_perihal" placeholder="Masukkan Perihal Surat" required>
                 </div>
                 <div class="mb-3">
-                    <label for="klasifikasi" class="form-label fw-bold">Klasifikasi Surat</label>
-                    <select name="klasifikasi" id="klasifikasi" class="form-select" required>
-                        <option selected disabled>Pilih Klasifikasi</option>
-                        <option value="rapat_guru">Rapat Guru</option>
-                        <option value="surat_rutin">Surat Rutin</option>
-                    </select>
+                    <div class="mb-3">
+                        <label for="letter_type_id" class="form-label fw-bold">Klasifikasi Surat</label>
+                        <select name="letter_type_id" id="letter_type_id" class="form-select" required>
+                            <option selected disabled>Pilih Klasifikasi</option>
+                            @foreach ($letterType as $type)
+                                <option value="{{ $type->id }}">{{ $type->name_type }}</option>
+                            @endforeach
+                        </select>
+                    </div>                    
                 </div>
                 <div class="mb-3">
-                    <label for="isi" class="form-label fw-bold">Isi Surat</label>
-                    <input id="isi" type="hidden" name="isi">
-                    <trix-editor input="isi" class="form-control"></trix-editor>
+                    <label for="content" class="form-label fw-bold">Isi Surat</label>
+                    <input id="content" type="hidden" name="content">
+                    <trix-editor input="content" class="form-control"></trix-editor>
                 </div>
                 <div class="mb-3">
                     <label class="form-label fw-bold">Peserta</label>
@@ -36,34 +39,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Asep</td>
-                                <td>
-                                    <input type="checkbox" name="peserta[]" value="Udin">
-                                </td>
-                            </tr>
-                            {{-- @foreach ($guru as $item) Loop data guru dari database --}}
-                                {{-- <tr>
-                                    <td>{{ $item->nama }}</td>
+                            @foreach ($guru as $item)
+                                <tr>
+                                    <td>{{ $item->name }}</td>
                                     <td>
-                                        <input type="checkbox" name="peserta[]" value="{{ $item->id }}">
+                                        <input type="checkbox" name="recipients[]" value="{{ $item->id }}">
                                     </td>
                                 </tr>
-                            @endforeach --}}
-                        </tbody>
+                            @endforeach
+                        </tbody>                        
                     </table>
                 </div>
                 <div class="mb-3">
-                    <label for="lampiran" class="form-label fw-bold">Lampiran</label>
-                    <input type="file" class="form-control" id="lampiran" name="lampiran" accept=".pdf,.docx,.jpg,.png">
+                    <label for="attachment" class="form-label fw-bold">Lampiran</label>
+                    <input type="file" class="form-control" id="attachment" name="attachment" accept=".pdf,.docx,.jpg,.png">
                 </div>
                 <div class="mb-3">
-                    <label for="notuls" class="form-label fw-bold">Notuls</label>
-                    <select name="notuls" id="notuls" class="form-select" required>
-                        <option selected disabled>Pilih notuls</option>
-                        <option value="">Asep</option>
+                    <label for="notulis" class="form-label fw-bold">Notulis</label>
+                    <select name="notulis" id="notulis" class="form-select" required>
+                        <option selected disabled>Pilih Notulis</option>
+                        @foreach ($guru as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
                     </select>
-                </div>
+                </div>                
                 <button type="submit" class="btn btn-primary">Tambah</button>
             </form>
         </div>

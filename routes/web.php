@@ -39,6 +39,7 @@ Route::prefix('teacher')->name('teacher.')->group(function () {
     Route::delete('/delete/{id}', [TeacherController::class, 'destroy'])->name('destroy');
 });
 
+
 Route::prefix('klasifikasi_letter')->name('klasifikasi_letter.')->group(function () {
     Route::get('/index', [LetterTypeController::class, 'index'])->name('index');
     Route::get('/create', [LetterTypeController::class, 'create'])->name('create');
@@ -54,9 +55,14 @@ Route::prefix('klasifikasi_letter')->name('klasifikasi_letter.')->group(function
 Route::get('/klasifikasi_letter/test', function () {
     return view('klasifikasi_letter/downloadTest');
 });
-Route::get('/letter/create', function () {
-    return view('/letter/create');
-});
-Route::get('/letter/edit', function () {
-    return view('/letter/edit');
+
+
+Route::prefix('letters')->name('letters.')->group(function () {
+    Route::get('/index', [LetterController::class, 'index'])->name('index');
+    Route::get('/create', [LetterController::class, 'create'])->name('create');
+    Route::post('/store', [LetterController::class, 'store'])->name('store');
+    Route::get('/show/{id}', [LetterController::class, 'show'])->name('show');
+    Route::get('/edit/{id}', [LetterController::class, 'edit'])->name('edit');
+    Route::patch('/update/{id}', [LetterController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [LetterController::class, 'destroy'])->name('destroy');
 });
