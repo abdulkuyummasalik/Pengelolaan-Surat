@@ -29,7 +29,7 @@
                     @foreach($letter as $index => $item)
                         <tr>
                             <td>{{ $index + 1 }}</td>
-                            <td>{{ $letterType->letter_code }}</td>
+                            <td>-</td>
                             <td>{{ $item->letter_perihal }}</td>
                             <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y') }}</td>
                             <td>
@@ -37,7 +37,7 @@
                                     <span>{{ $recipient }}, </span>
                                 @endforeach
                             </td>
-                            <td>{{ $guru->name}}</td>
+                            <td>{{ $item->notulis }}</td>
                             <td>
                                 <!-- Tampilkan hasil rapat jika ada -->
                                 {{ $item->result_rapat ?? 'Belum ada hasil' }}

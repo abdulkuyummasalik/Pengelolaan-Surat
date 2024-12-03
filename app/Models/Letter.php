@@ -16,7 +16,7 @@ class Letter extends Model
         return $this->belongsTo(LetterType::class,'letter_type_id');
     }
 
-    public function notulisUser(){
+    public function notulis(){
         return $this->belongsTo(User::class,'notulis');
     }
 

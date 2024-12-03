@@ -10,17 +10,17 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-    Schema::create('letters', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('letter_type_id')->constrained('letter_types')->onDelete('cascade');
-        $table->string('letter_perihal');
-        $table->json('recipients');
-        $table->text('content');
-        $table->string('attachment')->nullable();
-        $table->foreignId('notulis')->constrained('users')->onDelete('cascade');
-        $table->timestamps();
-    });
+    {
+        Schema::create('letters', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('letter_type_id')->constrained('letter_types')->onDelete('cascade');
+            $table->string('letter_perihal');
+            $table->json('recipients');
+            $table->text('content');
+            $table->string('attachment')->nullable();
+            $table->foreignId('notulis')->constrained('users')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
