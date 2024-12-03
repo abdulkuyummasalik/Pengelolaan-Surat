@@ -9,14 +9,14 @@ class Letter extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['letter_type_id', 'perihal', 'recipients', 'content', 'attachment', 'user_id'];
+    protected $fillable = ['letter_type_id', 'letter_perihal', 'recipients', 'content', 'attachment', 'user_id','notulis'];
 
     public function letterType()
     {
         return $this->belongsTo(LetterType::class,'letter_type_id');
     }
 
-    public function notulis(){
+    public function notulisUser(){
         return $this->belongsTo(User::class,'notulis');
     }
 

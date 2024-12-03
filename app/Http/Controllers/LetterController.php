@@ -14,7 +14,7 @@ class LetterController extends Controller
      */
     public function index()
     {
-        $letter = Letter::all();
+        $letter = Letter::with('notulisUser')->get(); // Muat relasi notulisUser
         $letterType = LetterType::all();
         $guru = User::all();
 
@@ -26,10 +26,9 @@ class LetterController extends Controller
      */
     public function create()
     {
-        $letter = Letter::all();
         $letterType = LetterType::all();
         $guru = User::where('role', 'guru')->get();
-        return view('letter.create', compact('letter', 'letterType', 'guru'));
+        return view('letter.create', compact('letterType', 'guru'));
     }
 
     /**
@@ -46,24 +45,36 @@ class LetterController extends Controller
             'notulis' => 'required|exists:users,id',
         ]);
 
-        $attachmentPath = null;
-        if ($request->hasFile('attachment')) {
-            $fileName = time() . '-' . $request->file('attachment')->getClientOriginalName();
-            $attachmentPath = $request->file('attachment')->storeAs('attachments', $fileName, 'public');
+        // Proses recipients menjadi JSON
+        $recipients = [];
+        if ($request->recipients) {
+            $recipients = User::whereIn('id', $request->recipients)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'role' => $user->role,
+                    ];
+                })
+                ->toArray();
         }
 
-        $letter = new Letter();
-        $letter->letter_perihal = $request->letter_perihal;
-        $letter->letter_type_id = $request->letter_type_id;
-        $letter->content = $request->content;
-        $letter->recipients = json_encode($request->recipients);
-        $letter->attachment = $attachmentPath;
-        $letter->notulis = $request->notulis;
-        $letter->save();
+        // Proses attachment jika ada
+        $attachmentPath = $request->file('attachment') ? $request->file('attachment')->store('attachments') : null;
 
-        return redirect()->route('letters.index')->with('success', 'Data Surat berhasil ditambahkan!');
+        // Simpan data surat
+        Letter::create([
+            'letter_perihal' => $request->letter_perihal,
+            'letter_type_id' => $request->letter_type_id,
+            'content' => $request->content,
+            'recipients' => json_encode($recipients),
+            'attachment' => $attachmentPath,
+            'notulis' => $request->notulis,
+        ]);
+
+        return redirect()->route('letters.index')->with('success', 'Surat berhasil ditambahkan');
     }
-
 
     /**
      * Display the specified resource.

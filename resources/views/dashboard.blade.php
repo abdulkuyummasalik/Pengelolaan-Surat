@@ -35,7 +35,7 @@
                                 style="width: 50px; height: 50px;">
                                 <i class="bi bi-send-fill text-primary fs-4"></i>
                             </div>
-                            <h1 class="mb-0">0</h1>
+                            <h1 class="mb-0">{{ $letter }}</h1>
                         </div>
                     </div>
                 </div>
