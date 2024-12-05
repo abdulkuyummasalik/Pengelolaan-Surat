@@ -9,7 +9,7 @@
         <div class="nav-item text-nowrap">
             <ul class="nav flex-row align-items-center">
                 <li class="nav-item">
-                    <form action="/logout" method="POST">
+                    <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="nav-link px-3 bg-primary border-0 text-white">
                             <i class="bi bi-box-arrow-right"></i> Logout

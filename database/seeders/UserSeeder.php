@@ -24,5 +24,19 @@ class UserSeeder extends Seeder
                 'role' => $roles[array_rand($roles)],
             ]);
         }
+
+        User::create([
+            'name' => 'staff',
+            'email' => 'staff@gmail.com',
+            'password' => Hash::make('password'),
+            'role' => 'staff',
+        ]);
+
+        User::create([
+            'name' => 'guru',
+            'email' => 'guru@gmail.com',
+            'password' => Hash::make('password'),
+            'role' => 'guru',
+        ]);
     }
 }

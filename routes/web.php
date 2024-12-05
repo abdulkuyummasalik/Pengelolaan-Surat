@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LetterController;
-use App\Http\Controllers\LetterTypeController;
-use App\Http\Controllers\StaffController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teach;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\LetterController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LetterTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,10 @@ use App\Http\Controllers\TeacherController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
