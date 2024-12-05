@@ -24,21 +24,21 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if ($user->role === 'guru') {
-                return redirect()->route('home');
+                return redirect()->route('home')->with('success', 'Login Berhasil!');
             } elseif ($user->role === 'staff') {
-                return redirect()->route('home');
+                return redirect()->route('home')->with('success', 'Login Berhasil!');
             } else {
                 Auth::logout();
-                return redirect()->route('login')->with('error', 'Role tidak dikenali.');
+                return redirect()->route('login')->with('failed', 'Role tidak dikenali.');
             }
         } else {
-            return redirect()->route('login')->with('error', 'Email atau password salah.');
+            return redirect()->route('login')->with('failed', 'Email atau password salah.');
         }
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
-    }   
+        return redirect()->route('login')->with('success', 'Berhasil Logout');
+    }
 }

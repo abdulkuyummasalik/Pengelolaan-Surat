@@ -18,14 +18,18 @@
                     <h3 class="mb-0">Login ke Akun</h3>
                 </div>
                 <div class="card-body p-5">
-                    @if (Session::get('failed'))
-                        <div class="alert alert-danger">
-                            {{ Session::get('failed') }}
+                    @if (Session::get('success'))
+                        <div class="d-flex justify-content-center mb-2">
+                            <div class="alert alert-primary text-center w-50" role="alert">
+                                <i class="bi bi-check-circle-fill me-2"></i> {{ Session::get('success') }}
+                            </div>
                         </div>
                     @endif
-                    @if (Session::get('success'))
-                        <div class="alert alert-success">
-                            {{ Session::get('success') }}
+                    @if (Session::get('failed'))
+                        <div class="d-flex justify-content-center mb-2">
+                            <div class="alert alert-danger text-center w-50" role="alert">
+                                <i class="bi bi-check-circle-fill me-2"></i> {{ Session::get('failed') }}
+                            </div>
                         </div>
                     @endif
                     <form method="POST" action="{{ route('postlogin') }}">
