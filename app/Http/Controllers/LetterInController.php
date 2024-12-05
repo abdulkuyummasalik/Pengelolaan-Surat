@@ -27,8 +27,9 @@ class LetterInController extends Controller
     public function create()
     {
         $letterType = LetterType::all();
+        $letter = Letter::with('notulisUser')->get();
         $guru = User::where('role', 'guru')->get();
-        return view('letter.create', compact('letterType', 'guru'));
+        return view('letter_in.create', compact('letterType', 'guru', 'letter'));
     }
 
     /**

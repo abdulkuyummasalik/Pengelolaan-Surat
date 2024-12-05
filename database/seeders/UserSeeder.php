@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles = ['guru', 'staff'];
+        $roles = ['guru'];
 
         for ($i = 0; $i < 5; $i++) {
             User::create([
