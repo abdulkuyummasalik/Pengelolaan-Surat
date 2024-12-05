@@ -35,7 +35,6 @@ Route::prefix('staff')->name('staff.')->group(function () {
     Route::delete('/delete{id}', [StaffController::class, 'destroy'])->name('destroy');
 });
 
-
 Route::prefix('teacher')->name('teacher.')->group(function () {
     Route::get('/index', [TeacherController::class, 'index'])->name('index');
     Route::get('/create', [TeacherController::class, 'create'])->name('create');
