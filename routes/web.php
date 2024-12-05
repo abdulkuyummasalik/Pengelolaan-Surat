@@ -70,4 +70,10 @@ Route::prefix('letters')->name('letters.')->group(function () {
     Route::get('/edit/{id}', [LetterController::class, 'edit'])->name('edit');
     Route::patch('/update/{id}', [LetterController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [LetterController::class, 'destroy'])->name('destroy');
+
+
+
+
+
+
 });
