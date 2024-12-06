@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Surat</title>
+        <style>
+            * {
+                font-family: "Times New Roman", Times, serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: #f0f0f0;
+                font-size: 11pt;
+            }
+
+            .container {
+                width: 21cm;
+                height: 29.7cm;
+                margin: 0 auto;
+                padding: 2cm;
+                background-color: white;
+                color: black;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            header {
+                margin-bottom: 2rem;
+            }
+
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            nav .logo img {
+                width: 100px;
+                height: auto;
+            }
+
+            nav .program h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            nav .program hr {
+                border: none;
+                border-top: 2px solid black;
+                margin: 0.5rem auto;
+                width: 100%;
+            }
+
+            nav .program p {
+                font-size: 0.9rem;
+                margin: 0.2rem 0;
+            }
+
+            nav .address {
+                text-align: right;
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            hr {
+                border: none;
+                border-top: 2px solid black;
+                margin: 1rem 0;
+            }
+
+            hr {
+                border: none;
+                border-top: 2px solid black;
+                margin: 1rem 0;
+            }
+
+            main {
+                font-size: 11pt;
+                line-height: 1.5;
+            }
+
+            main .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+
+            main .header .info p {
+                margin: 0.5rem 0;
+            }
+
+            main .header .date {
+                margin-right: 5rem;
+            }
+
+            main .header .date div {
+                display: block;
+                text-align: right;
+                margin-bottom: 1.5rem;
+            }
+
+            main .content {
+                padding: 0 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            ul {
+                padding-left: 1.5rem;
+            }
+
+            ul li {
+                list-style: none;
+                margin-bottom: 0.5rem;
+            }
+
+            .teaher {
+                margin-bottom: 2rem;
+            }
+            .teaher p {
+                margin-bottom: 0.5rem;
+            }
+
+            .signature {
+                display: flex;
+                justify-content: end;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <nav>
+                    <div class="logo">
+                        <img
+                            src="https://smkwikrama.sch.id/assets2/wikrama-logo.png"
+                            alt="SMK WIKRAMA"
+                        />
+                    </div>
+                    <div class="program">
+                        <h2>SMK WIKRAMA BOGOR</h2>
+                        <hr />
+                        <p>Bisnis dan Manajemen</p>
+                        <p>Teknologi Informasi dan Komunikasi</p>
+                        <p>Pariwisata</p>
+                    </div>
+                    <div class="address">
+                        <p>Jl. Raya Wangun Kel. Sindangsari Bogor</p>
+                        <p>Telp/Faks: (0251) 8242411</p>
+                        <p>Email: prohumasi@smkwikrama.sch.id</p>
+                        <p>Website: www.smkwikrama.sch.id</p>
+                    </div>
+                </nav>
+                <hr />
+            </header>
+
+            <main>
+                <div class="header">
+                    <div class="info">
+                        <p>No : 12345-1/SMKWIKRAMA/XI/2023</p>
+                        <p>Hal : <b>Rapat Rutin</b></p>
+                    </div>
+                    <div class="date">
+                        <div class="">
+                            <p>17 Desember 2023</p>
+                        </div>
+                        <p>Kepada</p>
+                        <p>Yth. Bapak/Ibu Terlampir</p>
+                        <p>di</p>
+                        <p>Tempat</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <p>Dengan hormat,</p>
+                    <br />
+                    <p>
+                        Bersama ini kami mengundang Bapak/Ibu untuk mengikuti
+                        rapat yang akan dilaksanakan pada:
+                    </p>
+                    <br />
+                    <ul>
+                        <li>Hari, Tanggal : Rabu, 13 Desember 2023</li>
+                        <li>Pukul : 14.00 WIB s.d. Selesai</li>
+                        <li>Tempat : Ruang Kepala Sekolah</li>
+                        <li>Agenda : Pengelolaan Laboratorium</li>
+                        <li>Notulis : Dinda S.S.</li>
+                    </ul>
+                    <br />
+                    <p>
+                        Demikian undangan ini kami sampaikan. Atas perhatian dan
+                        kerja sama Bapak/Ibu, kami ucapkan terima kasih.
+                    </p>
+                </div>
+                <div class="teaher">
+                    <ul>
+                        <li>Dinda S.S.</li>
+                        <li>Agus S.S.</li>
+                        <li>Yulianto S.S.</li>
+                    </ul>
+                </div>
+                <div class="signature">
+                    <div class="">
+                        <p>Hormat kami,</p>
+                        <p>Kepala SMK Wikrama Bogor</p>
+                        <p
+                            style="
+                                display: block;
+                                text-align: center;
+                                margin-top: 5rem;
+                            "
+                        >
+                            (........................)
+                        </p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
